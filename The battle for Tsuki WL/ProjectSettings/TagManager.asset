@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - Player
+  - Enemy
+  - Post Processing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Layer 6
+    uniqueID: 2138003415
+    locked: 0
+  - name: Layer 5
+    uniqueID: 4192896775
+    locked: 0
+  - name: Layer 4
+    uniqueID: 1279106017
+    locked: 0
+  - name: Layer 3
+    uniqueID: 2260763937
+    locked: 0
+  - name: Layer 2
+    uniqueID: 2927613367
+    locked: 0
+  - name: Layer 1
+    uniqueID: 1093117563
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Layer 0
+    uniqueID: 709218021
+    locked: 0
+  - name: Layer -1
+    uniqueID: 2860236821
+    locked: 0
+  - name: Layer -2
+    uniqueID: 3047565793
+    locked: 0
+  - name: Layer -3
+    uniqueID: 4168093733
+    locked: 0
+  - name: Layer -4
+    uniqueID: 1773795369
+    locked: 0
+  - name: Layer -5
+    uniqueID: 2708235603
+    locked: 0
+  - name: Layer -6
+    uniqueID: 891619175
+    locked: 0
