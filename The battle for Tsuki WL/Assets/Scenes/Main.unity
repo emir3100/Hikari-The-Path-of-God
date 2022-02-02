@@ -7718,7 +7718,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 77.1, y: 79.07}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 748.9128, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1158446136
 MonoBehaviour:
@@ -7740,7 +7740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player
+  m_text: strups | Tsuki
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75f26c64aa17ae644a8615622ba52e75, type: 2}
   m_sharedMaterial: {fileID: -8401719199691062078, guid: 75f26c64aa17ae644a8615622ba52e75, type: 2}
@@ -7971,7 +7971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: bdb47a6c3c22a8c45819932e2ff262e0, type: 3}
+  m_Texture: {fileID: 2800000, guid: 048eca51fb9a41844b66a7785ad2e5ff, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
