@@ -10,6 +10,10 @@ public class PlayerCombat : MonoBehaviour
     public float AttackRate = 2f;
     public LayerMask EnemyLayers;
 
+    public AudioClip swing1;
+    public AudioClip swing2;
+    public AudioClip shield;
+
     private float nextAttackTime = 0f;
     private Animator animator;
 
@@ -36,8 +40,13 @@ public class PlayerCombat : MonoBehaviour
 
     private void Attack()
     {
+        int attack = UnityEngine.Random.Range(1, 3);
+        animator.SetTrigger($"Attack{attack}");
 
-        animator.SetTrigger($"Attack{UnityEngine.Random.Range(1, 3)}");
+        if (attack == 1)
+            GameManager.Instance.AudioSource.PlayOneShot(swing1);
+        else if (attack == 2)
+            GameManager.Instance.AudioSource.PlayOneShot(swing2);
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
 
@@ -51,7 +60,7 @@ public class PlayerCombat : MonoBehaviour
     {
 
         animator.SetTrigger("Defend");
-
+        GameManager.Instance.AudioSource.PlayOneShot(shield);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
         foreach (var enemy in hitEnemies)
         {

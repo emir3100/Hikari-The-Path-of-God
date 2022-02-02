@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     public float AttackRate = 2f;
     public LayerMask PlayerLayer;
 
+    public AudioClip hit;
+    public AudioClip death;
+    public AudioClip block;
+
     public bool CanAttackPlayer;
     private int currentHealth;
     private Animator animator;
@@ -99,6 +103,13 @@ public class Enemy : MonoBehaviour
 
     public void CanAttack()
     {
+        if (!CanAttackPlayer)
+        {
+            animator.ResetTrigger("Attack");
+            GameManager.Instance.AudioSource.PlayOneShot(block);
+            return;
+        }
+
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, PlayerLayer);
 
         foreach (var player in hitPlayer)
@@ -130,6 +141,7 @@ public class Enemy : MonoBehaviour
     public void DefendBlock()
     {
         CanAttackPlayer = false;
+        GameManager.Instance.AudioSource.PlayOneShot(block);
         GetHit();
     }
 
@@ -137,6 +149,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        GameManager.Instance.AudioSource.PlayOneShot(hit);
         currentHealth -= damage;
         GetHit();
 
@@ -148,6 +161,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        GameManager.Instance.AudioSource.PlayOneShot(death);
         animator.SetBool("IsDead", true);
         Debug.Log("enemy dead");
 
