@@ -6,13 +6,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //public DialogueBoxController dialogueBoxController;
-    private static GameManager instance;
     public CameraEffects cameraEffects;
     [SerializeField] public AudioTrigger gameMusic;
     [SerializeField] public AudioTrigger gameAmbience;
 
-    public AudioSource AudioSource; 
+    public AudioSource AudioSource;
 
+    private static GameManager instance;
     public static GameManager Instance
     {
         get

@@ -16,11 +16,23 @@ public class Enemy : MonoBehaviour
     public float AttackRate = 2f;
     public LayerMask PlayerLayer;
 
+    public bool CanAttackPlayer;
     private int currentHealth;
     private Animator animator;
     private Rigidbody2D rigidbody;
     private float nextAttackTime = 0f;
     private PlayerHealth playerHealth;
+
+    private static Enemy instance;
+    public static Enemy Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<Enemy>();
+            return instance;
+        }
+    }
 
     private void Awake()
     {
@@ -59,14 +71,23 @@ public class Enemy : MonoBehaviour
             StopChase();
         }
 
-
-
         animator.SetFloat("Speed", rigidbody.velocity.magnitude);
+
+        if (!CanAttackPlayer)
+        {
+            StartCoroutine(ResetCanAttackPlayer(1f));
+        }
+    }
+
+    IEnumerator ResetCanAttackPlayer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        CanAttackPlayer = true;
     }
 
     private void Attack()
     {
-        if (playerHealth.isDead)
+        if (playerHealth.isDead || !CanAttackPlayer)
             return;
 
         StopChase();
@@ -105,6 +126,14 @@ public class Enemy : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
     }
+
+    public void DefendBlock()
+    {
+        CanAttackPlayer = false;
+        GetHit();
+    }
+
+    
 
     public void TakeDamage(int damage)
     {

@@ -27,14 +27,10 @@ public class PlayerCombat : MonoBehaviour
                 Attack();
                 nextAttackTime = Time.time + 1f / AttackRate;
             }
-
-            else if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                StrongAttack();
-                nextAttackTime = Time.time + 1f / AttackRate;
-            }
-
-            
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Defend();
         }
     }
 
@@ -50,18 +46,18 @@ public class PlayerCombat : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(25);
         }
     }
-
-    private void StrongAttack()
+    
+    private void Defend()
     {
 
-        animator.SetTrigger($"Attack{UnityEngine.Random.Range(2, 5)}");
+        animator.SetTrigger("Defend");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
-
         foreach (var enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(45);
+            enemy.GetComponent<Enemy>().DefendBlock();
         }
+
     }
 
     private void OnDrawGizmosSelected()

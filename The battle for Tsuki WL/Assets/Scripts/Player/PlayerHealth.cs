@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int MaxHealth = 100;
+    public float MaxHealth = 100f;
     public Slider Slider;
 
-    private int currentHealth;
+    private float currentHealth;
     [HideInInspector]
     public bool isDead = false;
 
@@ -29,6 +29,15 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         Slider.value = Mathf.Lerp(Slider.value, currentHealth, 5 * Time.deltaTime);
+
+        if (currentHealth < 100f && currentHealth > 0f)
+            StartCoroutine("Regenerate");
+    }
+
+    private IEnumerator Regenerate()
+    {
+        yield return new WaitForSeconds(7f);
+        currentHealth += 5 * Time.deltaTime;
     }
 
     public void TakeDamage(int damage)
