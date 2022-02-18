@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public AudioTrigger gameMusic;
     [SerializeField] public AudioTrigger gameAmbience;
 
+
     public AudioSource AudioSource;
 
     private static GameManager instance;
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AudioSource = GetComponent<AudioSource>();
+    }
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     public void HurtEffect()

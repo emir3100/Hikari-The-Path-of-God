@@ -587,6 +587,7 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: d06bc9c6a59a86f48be7169b1c255d8e, type: 3}
   death: {fileID: 8300000, guid: a16b66a826d9bfa4faca7c5cdfa4699a, type: 3}
   block: {fileID: 8300000, guid: e71f3a26166b7e4478795f5e6c417eef, type: 3}
+  HitEffect: {fileID: 0}
   CanAttackPlayer: 0
 --- !u!70 &7729005450990999457
 CapsuleCollider2D:

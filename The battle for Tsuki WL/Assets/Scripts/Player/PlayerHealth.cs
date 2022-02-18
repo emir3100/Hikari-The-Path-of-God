@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float MaxHealth = 100f;
-    public Slider Slider;
+    public Image Slider;
 
     private float currentHealth;
     [HideInInspector]
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        Slider.value = Mathf.Lerp(Slider.value, currentHealth, 5 * Time.deltaTime);
+        Slider.fillAmount = Mathf.Lerp(Slider.fillAmount, currentHealth/100, 5 * Time.deltaTime);
 
         if (currentHealth < 100f && currentHealth > 0f)
             StartCoroutine("Regenerate");
@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
     {
         GameManager.Instance.AudioSource.PlayOneShot(PlayerMovement.Instance.deathSound);
         currentHealth = 0;
-        Slider.value = 0;
+        Slider.fillAmount = 0;
         isDead = true;
         animator.SetBool("IsDead", true);
         this.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;

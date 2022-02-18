@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
     public AudioClip death;
     public AudioClip block;
 
+    public GameObject HitEffect;
+
     public bool CanAttackPlayer;
     private int currentHealth;
     private Animator animator;
@@ -156,11 +158,13 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Hit");
 
         if (currentHealth <= 0)
-            Die();
+            Die();  
     }
 
     private void Die()
     {
+        var effect = Instantiate(HitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 2f);
         GameManager.Instance.AudioSource.PlayOneShot(death);
         animator.SetBool("IsDead", true);
         Debug.Log("enemy dead");
